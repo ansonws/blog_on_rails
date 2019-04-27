@@ -10,6 +10,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <nav class="navbar">
+        <%= link_to 'Blog On Rails', posts_path %>
+        <%= link_to 'Home', posts_path %>
+        <%= link_to 'New Post', new_post_path %>
+      </nav>
+      <% flash.each do |type, message| %>
+        <div>
+          <%= message %>  
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

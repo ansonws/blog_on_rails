@@ -1,31 +1,34 @@
+<div class="form-padding mt-3">
 <h2><%= @post.title %></h2>
 <p><%= @post.body %></p>
 <small><p>Posted <%= time_ago_in_words(@post.created_at) %> ago</p></small>
-<%= link_to 'Edit', edit_post_path(@post) %> 
+<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary" %> 
 <%= 
     link_to 'Delete',
     post_path(@post),
+    class: "btn btn-outline-primary",
     method: :delete,
     data: { confirm: "Are you sure you want to delete #{ @post.title }?" } 
 %> 
-
+<div class="form-group my-4">
 <h5>Comment</h5>
-<%= form_with model: [@post, @comment], local: true do |f| %>
-    <div>
-        <%= f.label :body %>
-        <%= f.text_area :body %>
-    </div>
-    <%= f.submit "Submit"%>
-<% end %>
-<hr>
+    <%= form_with model: [@post, @comment], local: true do |f| %>
+        <div>
+            <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <%= f.submit "Submit", class: "btn btn-outline-primary mt-3"%>
+    <% end %>
+</div>
+
 <% @comments.each do |comment| %>
     <p><%= comment.body %></p>
     <small>
-        Posted <%= time_ago_in_words(comment.created_at) %> ago
+        Commented <%= time_ago_in_words(comment.created_at) %> ago
     </small>
      • <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>   
     <hr>
 <% end %>
+</div>
 
 
 

@@ -21,12 +21,13 @@
 </div>
 
 <% @comments.each do |comment| %>
-    <p><%= comment.body %></p>
-    <small>
-        Commented <%= time_ago_in_words(comment.created_at) %> ago
-    </small>
-     • <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>   
-    <hr>
+    <div class="mb-3">
+        <p class="mb-0"><%= comment.body %></p>
+        <small>
+            Commented <%= time_ago_in_words(comment.created_at) %> ago
+        </small>
+        • <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>   
+    </div>
 <% end %>
 </div>
 

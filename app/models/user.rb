@@ -17,5 +17,10 @@ class User < ApplicationRecord
         format: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     )
 
-    validates(:password_digest, presence: true)
+    validates(
+        :password,
+        presence: { on: :password_update },
+        length: { minimum: 5 }, 
+        if: :password_digest_changed?
+    ) 
 end

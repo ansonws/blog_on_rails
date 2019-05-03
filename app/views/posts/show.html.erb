@@ -10,7 +10,7 @@ by <%= @post.user.name %></p></small>
         post_path(@post),
         class: "btn btn-outline-primary",
         method: :delete,
-        data: { confirm: "Are you sure you want to delete #{ @post.title }?" } 
+        data: { confirm: "Are you sure you want to delete #{ @post.title }?" }
     %> 
 <% end %>
 <div class="form-group my-4">
@@ -31,7 +31,12 @@ by <%= @post.user.name %></p></small>
             <%= comment.user&.name %>
         </small>
         <% if can? :crud, comment %>
-        • <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>   
+        • <%= 
+            link_to "Delete", 
+            post_comment_path(@post, comment), 
+            method: :delete,
+            data: { confirm: "Delete comment?"}
+        %>   
         <% end %>
     </div>
 <% end %>

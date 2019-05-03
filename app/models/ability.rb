@@ -16,5 +16,9 @@ class Ability
       comment.user == user || comment.post.user == user
     end
 
+    can :crud, User do |a_user|
+      user == a_user
+    end
+
   end
 end

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
             flash[:info] = 'Logged in'
             redirect_to root_path
         else
-            flash[:info] = "Wrong email or password"
+            flash[:danger] = "Wrong email or password"
             render :new
         end
     end

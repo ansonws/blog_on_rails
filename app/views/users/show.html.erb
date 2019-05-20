@@ -1,0 +1,16 @@
+<div class="card text-center">
+  <div class="card-body">
+    <h2 class="card-title"><%= current_user.name %></h2>
+    <h4 class="card-subtitle mb-2 my-4 text-muted">Posts</h4>
+    <% current_user.posts.each do |post| %>
+        <p class="card-text"><%= link_to "#{post.title}", post_path(post) %></p>
+    <% end %>
+    <% if current_user.posts.length == 0 %>
+        <p>You don't have any posts. <%= link_to 'Write One.', new_post_path %></p>
+    <% end %>
+    <div class="mt-4">
+        <%= link_to 'Edit', edit_user_path(current_user), class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+
+</div>
